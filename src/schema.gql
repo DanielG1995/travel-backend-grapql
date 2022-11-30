@@ -1,0 +1,65 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Trip {
+  id: ID!
+  name: String!
+  description: String!
+  date: String!
+  active: Boolean!
+}
+
+type User {
+  id: ID!
+  fullName: String!
+  email: String!
+  roles: [String!]!
+  isActive: Boolean!
+}
+
+type AuthResponse {
+  token: String!
+  user: User!
+}
+
+type Query {
+  trips(status: Boolean): [Trip!]!
+  trip(id: ID!): Trip!
+  deleteTrip(id: ID!): Boolean!
+  users: [User!]!
+  user(id: ID!): User!
+}
+
+type Mutation {
+  createTrip(createTripInput: CreateTripInput!): Trip!
+  updateTrip(updateTripInput: UpdateTripInput!): Trip!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: ID!): User!
+  signup(signupInput: SignupInput!): AuthResponse!
+}
+
+input CreateTripInput {
+  name: String!
+  description: String!
+  date: String!
+}
+
+input UpdateTripInput {
+  id: ID!
+  name: String
+  description: String
+  date: String
+}
+
+input UpdateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input SignupInput {
+  email: String!
+  fullName: String!
+  password: String!
+}
